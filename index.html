@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ébola Bundibugyo 2026 en RDC | Sala Situacional</title>
+  <style>
+    :root{
+      --iets-blue:#3B92C1;
+      --iets-dark:#153A5B;
+      --iets-navy:#0B2442;
+      --iets-cyan:#37B7E8;
+      --iets-soft:#EAF7FC;
+      --iets-mint:#DDF4F7;
+      --alert-red:#E31B23;
+      --alert-orange:#FF8A00;
+      --alert-yellow:#FFE552;
+      --deep-purple:#6E3DD9;
+      --green:#20A464;
+      --white:#FFFFFF;
+      --ink:#102033;
+      --muted:#5F7187;
+      --line:#D8EAF3;
+      --shadow:0 18px 45px rgba(10,43,73,.18);
+      --radius:24px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:"Inter","Segoe UI",Arial,sans-serif;
+      background:
+        radial-gradient(circle at 8% 10%,rgba(59,146,193,.28),transparent 30%),
+        radial-gradient(circle at 90% 4%,rgba(55,183,232,.18),transparent 28%),
+        linear-gradient(180deg,#F5FBFE 0%,#EAF7FC 45%,#F8FCFE 100%);
+      color:var(--ink);
+    }
+
+    .page{width:min(1380px,94vw);margin:0 auto;padding:22px 0 48px}
+
+    /* Top navigation */
+    .topbar{
+      position:sticky;top:0;z-index:20;
+      display:flex;align-items:center;justify-content:space-between;gap:16px;
+      padding:14px 18px;margin-bottom:18px;
+      background:rgba(255,255,255,.82);
+      border:1px solid rgba(59,146,193,.24);
+      border-radius:0 0 26px 26px;
+      box-shadow:0 10px 26px rgba(11,36,66,.10);
+      backdrop-filter:blur(14px);
+    }
+    .brand{display:flex;align-items:center;gap:12px;min-width:245px}
+    .brand-mark{
+      width:42px;height:42px;border-radius:14px;
+      display:grid;place-items:center;
+      background:linear-gradient(135deg,var(--iets-blue),var(--iets-dark));
+      color:white;font-weight:1000;box-shadow:0 10px 20px rgba(59,146,193,.25)
+    }
+    .brand-text b{display:block;color:var(--iets-dark);font-size:.98rem;letter-spacing:-.02em}
+    .brand-text span{display:block;color:var(--muted);font-size:.78rem;font-weight:750}
+
+    .tabs{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+    .tab{
+      border:0;cursor:pointer;
+      padding:10px 14px;border-radius:999px;
+      background:#ECF7FC;color:var(--iets-dark);
+      font-weight:900;font-size:.84rem;
+      border:1px solid #D7EDF6;
+      transition:.2s ease;
+    }
+    .tab:hover{transform:translateY(-1px);background:#DDF2FA}
+    .tab.active{background:var(--iets-dark);color:white;border-color:var(--iets-dark);box-shadow:0 10px 22px rgba(21,58,91,.18)}
+    .credit-top{font-weight:1000;color:var(--iets-blue);white-space:nowrap}
+
+    /* Compact header */
+    .hero{
+      overflow:hidden;position:relative;
+      border-radius:30px;
+      background:
+        linear-gradient(120deg,rgba(21,58,91,.98),rgba(59,146,193,.92)),
+        radial-gradient(circle at 82% 20%,rgba(255,255,255,.18),transparent 28%);
+      color:white;box-shadow:var(--shadow);
+      border:1px solid rgba(255,255,255,.55);
+      padding:26px 30px;
+    }
+    .hero::before{
+      content:"";position:absolute;inset:0;opacity:.26;
+      background-image:radial-gradient(circle,rgba(255,255,255,.5) 1px,transparent 1px);
+      background-size:26px 26px;
+    }
+    .hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1.4fr .7fr;gap:22px;align-items:center}
+    .eyebrow{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+    .chip{
+      display:inline-flex;align-items:center;gap:6px;
+      background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.26);
+      padding:8px 11px;border-radius:999px;font-size:.8rem;font-weight:850;color:#EAF7FC
+    }
+    h1{margin:0;font-size:clamp(2rem,4.2vw,4.2rem);line-height:.94;letter-spacing:-.065em;font-weight:1000;text-transform:uppercase}
+    h1 span{color:var(--alert-yellow);display:block;font-style:italic}
+    .subtitle{
+      display:inline-block;margin-top:14px;padding:10px 16px;border-radius:14px;
+      background:var(--alert-red);color:white;font-weight:950;font-size:clamp(.98rem,1.5vw,1.25rem);
+      box-shadow:0 12px 26px rgba(227,27,35,.28)
+    }
+    .hero p{margin:12px 0 0;max-width:880px;color:#E9F8FF;line-height:1.5;font-weight:640}
+    .hero-side{
+      background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.26);
+      border-radius:24px;padding:18px;backdrop-filter:blur(10px)
+    }
+    .hero-side .big{font-size:3.4rem;line-height:.9;font-weight:1000;color:var(--alert-yellow);letter-spacing:-.08em}
+    .hero-side .label{font-weight:950;line-height:1.15;margin-top:8px;color:white}
+    .hero-side .small{font-size:.82rem;color:#DDF4F7;margin-top:10px;font-weight:750}
+
+    .panel{display:none;animation:fade .25s ease}
+    .panel.active{display:block}
+    @keyframes fade{from{opacity:.35;transform:translateY(5px)}to{opacity:1;transform:none}}
+
+    .section-title{display:flex;align-items:center;gap:12px;margin:24px 0 14px;color:var(--iets-dark);font-weight:1000;text-transform:uppercase;letter-spacing:-.035em;font-size:clamp(1.3rem,2.4vw,2.05rem)}
+    .section-title .icon{width:46px;height:46px;border-radius:16px;background:var(--iets-blue);color:white;display:grid;place-items:center;box-shadow:0 12px 22px rgba(59,146,193,.25)}
+
+    .kpi-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+    .kpi{position:relative;overflow:hidden;color:white;min-height:132px;border-radius:22px;padding:18px;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.65)}
+    .kpi::after{content:"";position:absolute;right:-32px;top:-32px;width:105px;height:105px;border-radius:50%;background:rgba(255,255,255,.16)}
+    .kpi .num{font-size:clamp(2.3rem,4vw,3.75rem);line-height:.92;font-weight:1000;letter-spacing:-.07em}
+    .kpi .label{margin-top:10px;font-size:.88rem;line-height:1.1;font-weight:950;text-transform:uppercase}
+    .kpi small{display:block;margin-top:7px;color:rgba(255,255,255,.82);font-weight:800}
+    .blue{background:linear-gradient(145deg,var(--iets-blue),var(--iets-dark))}.red{background:linear-gradient(145deg,#FF3B30,#B70F19)}.orange{background:linear-gradient(145deg,#FF9B22,#E45B00)}.purple{background:linear-gradient(145deg,#8B5BE8,#4C238A)}.teal{background:linear-gradient(145deg,#22B7C6,#08737F)}.sky{background:linear-gradient(145deg,#3C9FE0,#0E5EA0)}
+
+    .grid-2{display:grid;grid-template-columns:1.05fr .95fr;gap:18px;align-items:start}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:rgba(255,255,255,.94);color:var(--ink);border:1px solid rgba(59,146,193,.18);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px}
+    .card h2,.card h3{margin:0 0 14px;color:var(--iets-dark);letter-spacing:-.035em;line-height:1}.card h2{text-transform:uppercase;font-size:1.45rem}.card h3{font-size:1.12rem}.card p{color:#40536B;line-height:1.5;font-weight:650}
+
+    .map-layout{display:grid;grid-template-columns:1fr .9fr;gap:18px;align-items:center}
+    .map-box{min-height:310px;border-radius:22px;background:linear-gradient(135deg,#FFFFFF,#EAF7FC);border:1px solid #CFE8F4;display:grid;place-items:center;padding:16px}
+    .map-svg{width:100%;max-width:420px;filter:drop-shadow(0 12px 18px rgba(21,58,91,.16))}
+    .summary-row{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:12px}
+    .mini{border-radius:18px;background:linear-gradient(180deg,#FFFFFF,#EFF9FD);border:1px solid #D5EAF4;padding:15px 12px;text-align:center}
+    .mini .big{font-size:2.1rem;line-height:.95;font-weight:1000;color:var(--iets-blue);letter-spacing:-.06em}.mini .txt{color:#43566D;font-size:.82rem;line-height:1.14;font-weight:900}
+    .province{border-radius:16px;padding:14px 15px;background:#F5FBFE;border-left:8px solid var(--alert-red);margin-bottom:10px}.province:nth-child(2){border-left-color:var(--alert-orange)}.province:nth-child(3){border-left-color:var(--green)}.province b{display:block;color:var(--iets-dark);margin-bottom:4px}.province span{color:#4F637A;font-weight:760;line-height:1.35}
+
+    .pill-row{display:flex;flex-wrap:wrap;gap:9px;margin-top:12px}.pill{padding:9px 11px;border-radius:999px;background:#EAF7FC;color:var(--iets-dark);border:1px solid #CFEBF6;font-size:.82rem;font-weight:900}
+    .mini-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    .response-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.response-item{border-radius:20px;background:linear-gradient(180deg,#FFFFFF,#EFF9FD);border:1px solid #D5EAF4;text-align:center;padding:16px 10px}.response-item .emoji{font-size:1.8rem;margin-bottom:8px}.response-item .value{color:var(--iets-blue);font-size:1.8rem;font-weight:1000;letter-spacing:-.055em}.response-item .name{font-size:.78rem;line-height:1.16;font-weight:900;color:#43566D}
+
+    table{width:100%;border-collapse:collapse;border-radius:18px;overflow:hidden;font-size:.9rem}th{background:var(--iets-dark);color:white;padding:12px;text-align:left;font-weight:950}td{padding:11px 12px;border-bottom:1px solid #E3EFF5;color:#263A50;font-weight:760}tr:nth-child(even) td{background:#F7FCFE}tr:last-child td{border-bottom:0}.total-row td{background:#FFF3F4!important;color:#B70F19;font-weight:1000}
+    .table-wrap{overflow:auto;border-radius:18px;border:1px solid #E3EFF5}
+
+    .gender-card{background:linear-gradient(135deg,#FFFFFF,#F5F0FF);border:1px solid #E4D8FF}.gender-card h2{color:var(--deep-purple)}.service-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:16px}.service{background:white;border:1px solid #E6DCFF;border-radius:18px;padding:16px 10px;text-align:center;box-shadow:0 8px 20px rgba(110,61,217,.07)}.service .emoji{font-size:1.9rem;margin-bottom:8px}.service .txt{font-size:.82rem;line-height:1.14;font-weight:950;color:var(--deep-purple)}
+
+    .message{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center;background:linear-gradient(135deg,var(--iets-dark),var(--iets-blue));color:white;border-radius:26px;padding:24px;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.5)}.megaphone{width:78px;height:78px;border-radius:24px;background:var(--alert-red);display:grid;place-items:center;font-size:2.5rem}.message h2{margin:0 0 8px;color:var(--alert-yellow);font-size:clamp(1.5rem,3vw,2.7rem);line-height:.98;letter-spacing:-.05em;text-transform:uppercase}.message p{margin:0;color:#EAF7FC;line-height:1.5;font-weight:730}
+
+    .source-box{background:#F4FAFD;border:1px dashed #A8D2E6;border-radius:18px;padding:14px;color:#40536B;font-size:.88rem;line-height:1.45;font-weight:700}.footer{display:flex;justify-content:space-between;align-items:center;gap:18px;margin-top:20px;padding:18px 20px;border-radius:22px;background:white;border:1px solid rgba(59,146,193,.22);box-shadow:0 12px 28px rgba(10,43,73,.08)}.handle{color:var(--iets-blue);font-weight:1000;font-size:1.08rem}.footnote{color:#607287;font-size:.82rem;line-height:1.35;text-align:right;font-weight:720}
+
+    @media(max-width:1100px){.hero-inner,.grid-2,.map-layout,.message{grid-template-columns:1fr}.kpi-grid{grid-template-columns:repeat(3,1fr)}.mini-grid{grid-template-columns:repeat(2,1fr)}.response-grid{grid-template-columns:repeat(3,1fr)}.service-grid{grid-template-columns:repeat(3,1fr)}.topbar{position:relative;flex-direction:column}.brand{min-width:0}.credit-top{display:none}}
+    @media(max-width:700px){.page{width:94vw}.hero{padding:22px 18px}.kpi-grid{grid-template-columns:repeat(2,1fr)}.response-grid{grid-template-columns:repeat(2,1fr)}.service-grid{grid-template-columns:repeat(2,1fr)}.grid-3{grid-template-columns:1fr}.footer{flex-direction:column;align-items:flex-start}.footnote{text-align:left}.tabs{justify-content:flex-start}.tab{font-size:.78rem;padding:9px 11px}}
+  </style>
+</head>
+<body>
+  <main class="page">
+    <nav class="topbar">
+      <div class="brand">
+        <div class="brand-mark">Epi</div>
+        <div class="brand-text"><b>Sala situacional</b><span>Ébola Bundibugyo 2026 | RDC</span></div>
+      </div>
+      <div class="tabs" role="tablist" aria-label="Navegación de secciones">
+        <button class="tab active" data-tab="resumen">Resumen</button>
+        <button class="tab" data-tab="territorio">Territorio</button>
+        <button class="tab" data-tab="respuesta">Respuesta</button>
+        <button class="tab" data-tab="genero">Mujeres y niñas</button>
+        <button class="tab" data-tab="datos">Datos</button>
+      </div>
+      <div class="credit-top">@solsilvanazb_episig</div>
+    </nav>
+
+    <section class="hero">
+      <div class="hero-inner">
+        <div>
+          <div class="eyebrow">
+            <span class="chip">📅 Situación: 24 mayo 2026</span>
+            <span class="chip">📰 Publicación: 25 mayo 2026</span>
+            <span class="chip">📍 Ituri · Nord-Kivu · Sud-Kivu</span>
+          </div>
+          <h1>Ébola Bundibugyo <span>2026 en RDC</span></h1>
+          <div class="subtitle">Controlar la transmisión sin interrumpir los servicios esenciales</div>
+          <p>Lectura técnico-comunicacional del brote con énfasis en vigilancia, laboratorio, respuesta territorial, comunicación comunitaria, salud sexual y reproductiva, y protección de mujeres y niñas.</p>
+        </div>
+        <div class="hero-side">
+          <div class="big">17.ª</div>
+          <div class="label">epidemia de Ébola en la RDC desde 1976</div>
+          <div class="small">Fuente base: Rapport de Situation Ebola, Gouvernement RDC.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="resumen" class="panel active">
+      <div class="section-title"><span class="icon">🔎</span> Cifras clave del brote</div>
+      <div class="kpi-grid">
+        <article class="kpi blue"><div class="num">101</div><div class="label">Casos confirmados</div></article>
+        <article class="kpi red"><div class="num">10</div><div class="label">Muertes confirmadas</div></article>
+        <article class="kpi orange"><div class="num">906</div><div class="label">Casos sospechosos acumulados</div></article>
+        <article class="kpi purple"><div class="num">221</div><div class="label">Muertes sospechosas</div></article>
+        <article class="kpi teal"><div class="num">2.231</div><div class="label">Contactos listados</div></article>
+        <article class="kpi sky"><div class="num">133</div><div class="label">Personas hospitalizadas o en aislamiento</div><small>Al 24 de mayo</small></article>
+      </div>
+
+      <div class="grid-3" style="margin-top:18px">
+        <div class="card"><h3>Lectura rápida</h3><p>La epidemia está documentada en 3 provincias y 11 zonas de salud. La mayor carga se concentra en Ituri, especialmente en Bunia, Mongbwalu y Rwampara.</p></div>
+        <div class="card"><h3>Riesgo operativo</h3><p>El volumen de contactos listados y personas aisladas exige seguimiento activo, protección del personal sanitario y comunicación clara para reducir rumores y miedo.</p></div>
+        <div class="card"><h3>Mensaje central</h3><p>La respuesta no debe limitarse al control de casos: también debe preservar partos seguros, atención prenatal, anticoncepción, posparto y servicios frente a violencia basada en género.</p></div>
+      </div>
+    </section>
+
+    <section id="territorio" class="panel">
+      <div class="section-title"><span class="icon">🗺️</span> Territorio afectado</div>
+      <div class="grid-2">
+        <div class="card">
+          <h2>Provincias y zonas de salud</h2>
+          <div class="map-layout">
+            <div class="map-box">
+              <svg class="map-svg" viewBox="0 0 520 420" role="img" aria-label="Mapa estilizado de provincias afectadas en RDC">
+                <path d="M48 235 C80 172 130 170 152 110 C190 70 245 104 285 66 C340 34 390 75 430 106 C482 118 505 167 485 215 C474 260 429 300 378 295 C338 349 275 318 235 334 C178 356 145 305 100 317 C70 323 48 282 48 235Z" fill="#ffffff" stroke="#86a9cc" stroke-width="3"/>
+                <path d="M380 88 C435 100 478 140 486 198 C462 196 438 184 414 167 C394 148 380 120 380 88Z" fill="#E31B23" stroke="#ffffff" stroke-width="3"/>
+                <path d="M398 166 C430 183 454 200 480 215 C472 240 455 260 430 276 C408 258 391 233 386 205 C383 188 389 176 398 166Z" fill="#FF8A00" stroke="#ffffff" stroke-width="3"/>
+                <path d="M394 232 C410 253 427 269 430 276 C402 296 372 303 344 292 C354 268 372 247 394 232Z" fill="#20A464" stroke="#ffffff" stroke-width="3"/>
+                <text x="405" y="145" font-size="22" fill="white" font-weight="900">ITURI</text>
+                <text x="407" y="222" font-size="16" fill="white" font-weight="900">NORD-</text>
+                <text x="407" y="241" font-size="16" fill="white" font-weight="900">KIVU</text>
+                <text x="360" y="278" font-size="15" fill="white" font-weight="900">SUD-KIVU</text>
+              </svg>
+            </div>
+            <div>
+              <div class="summary-row"><div class="mini"><div class="big">3</div><div class="txt">provincias afectadas</div></div><div class="mini"><div class="big">11</div><div class="txt">zonas de salud</div></div></div>
+              <div class="province"><b>Ituri</b><span>Aru, Bunia, Kilo, Mongbwalu, Nizi, Nyankunde y Rwampara.</span></div>
+              <div class="province"><b>Nord-Kivu</b><span>Butembo, Goma, Katwa, Karisimbi y Kyondo.</span></div>
+              <div class="province"><b>Sud-Kivu</b><span>Miti-Murhesa.</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <h2>Distribución por provincia</h2>
+          <div class="table-wrap"><table><thead><tr><th>Provincia</th><th>Casos sospechosos</th><th>Muertes sospechosas</th><th>Casos confirmados</th><th>Contactos</th></tr></thead><tbody><tr><td><b>Ituri</b></td><td>885</td><td>221</td><td>94</td><td>1.817</td></tr><tr><td><b>Nord-Kivu</b></td><td>20</td><td>0</td><td>6</td><td>414</td></tr><tr><td><b>Sud-Kivu</b></td><td>1</td><td>0</td><td>1</td><td>ND</td></tr><tr class="total-row"><td>Total</td><td>906</td><td>221</td><td>101</td><td>2.231</td></tr></tbody></table></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="respuesta" class="panel">
+      <div class="section-title"><span class="icon">🧪</span> Laboratorio, vigilancia y respuesta</div>
+      <div class="grid-2">
+        <div class="card"><h2>Laboratorio y vigilancia</h2><div class="mini-grid"><div class="mini"><div class="big">290</div><div class="txt">muestras analizadas acumuladas</div></div><div class="mini"><div class="big">431</div><div class="txt">muestras recibidas en Bunia</div></div><div class="mini"><div class="big">101</div><div class="txt">positivos acumulados</div></div><div class="mini"><div class="big">34,8%</div><div class="txt">positividad acumulada</div></div></div><div class="pill-row"><span class="pill">Vigilancia epidemiológica</span><span class="pill">Diagnóstico por laboratorio</span><span class="pill">Seguimiento de contactos</span><span class="pill">Aislamiento seguro</span><span class="pill">Comunicación comunitaria</span></div></div>
+        <div class="card"><h2>Respuesta en terreno</h2><div class="response-grid"><div class="response-item"><div class="emoji">🚶</div><div class="value">11.628</div><div class="name">viajeros registrados</div></div><div class="response-item"><div class="emoji">🩺</div><div class="value">11.143</div><div class="name">viajeros tamizados</div></div><div class="response-item"><div class="emoji">🧼</div><div class="value">11.413</div><div class="name">lavados de manos</div></div><div class="response-item"><div class="emoji">📣</div><div class="value">11.628</div><div class="name">viajeros sensibilizados</div></div><div class="response-item"><div class="emoji">📍</div><div class="value">6</div><div class="name">puntos de control</div></div></div></div>
+      </div>
+      <div class="card" style="margin-top:18px"><h2>Comunicación de riesgo y participación comunitaria</h2><div class="summary-row"><div class="mini"><div class="big">1.735</div><div class="txt">personas sensibilizadas en visitas domiciliarias</div></div><div class="mini"><div class="big">6.700</div><div class="txt">fieles sensibilizados en cultos y comunidades cristianas de Bunia y Mahagi</div></div></div></div>
+    </section>
+
+    <section id="genero" class="panel">
+      <div class="section-title"><span class="icon">♀️</span> Mujeres, niñas y servicios esenciales</div>
+      <div class="card gender-card"><h2>¿Por qué importa el enfoque de género?</h2><p>Durante un brote de Ébola, las mujeres y niñas pueden enfrentar riesgos diferenciados por sus roles de cuidado, acompañamiento de personas enfermas, trabajo comunitario, atención en servicios de salud y exposición en espacios familiares. Además, el miedo al contagio puede reducir la búsqueda de atención en centros médicos.</p><div class="service-grid"><div class="service"><div class="emoji">🤰</div><div class="txt">Controles prenatales</div></div><div class="service"><div class="emoji">👶</div><div class="txt">Partos seguros</div></div><div class="service"><div class="emoji">💊</div><div class="txt">Anticoncepción</div></div><div class="service"><div class="emoji">🤱</div><div class="txt">Atención posparto</div></div><div class="service"><div class="emoji">👧</div><div class="txt">Atención a niñas y adolescentes</div></div><div class="service"><div class="emoji">🛡️</div><div class="txt">Servicios frente a violencia basada en género</div></div></div></div>
+      <div class="message" style="margin-top:18px"><div class="megaphone">📣</div><div><h2>Cortar la transmisión no debe significar cerrar el acceso a la salud</h2><p>Una respuesta efectiva al Ébola debe integrar prevención del contagio, vigilancia, laboratorio, aislamiento seguro, protección del personal de salud, comunicación comunitaria, salud sexual y reproductiva, y protección frente a violencia basada en género.</p></div></div>
+    </section>
+
+    <section id="datos" class="panel">
+      <div class="section-title"><span class="icon">📊</span> Datos detallados</div>
+      <div class="card"><h2>Detalle por zonas de salud</h2><div class="table-wrap"><table><thead><tr><th>Provincia</th><th>Zona de salud</th><th>Casos sospechosos</th><th>Muertes sospechosas</th><th>Casos confirmados</th><th>Contactos</th></tr></thead><tbody><tr><td>Ituri</td><td>Aru</td><td>4</td><td>1</td><td>1</td><td>0</td></tr><tr><td>Ituri</td><td>Bambu</td><td>6</td><td>2</td><td>0</td><td>183</td></tr><tr><td>Ituri</td><td>Bunia</td><td>249</td><td>48</td><td>24</td><td>404</td></tr><tr><td>Ituri</td><td>Kilo</td><td>8</td><td>0</td><td>1</td><td>0</td></tr><tr><td>Ituri</td><td>Mongbwalu</td><td>339</td><td>88</td><td>19</td><td>222</td></tr><tr><td>Ituri</td><td>Nizi</td><td>6</td><td>2</td><td>2</td><td>22</td></tr><tr><td>Ituri</td><td>Nyankunde</td><td>45</td><td>11</td><td>9</td><td>365</td></tr><tr><td>Ituri</td><td>Rwampara</td><td>228</td><td>69</td><td>32</td><td>621</td></tr><tr><td>Ituri</td><td>Muestras sin ficha</td><td>0</td><td>0</td><td>6</td><td>0</td></tr><tr><td>Nord-Kivu</td><td>Butembo</td><td>7</td><td>0</td><td>1</td><td>22</td></tr><tr><td>Nord-Kivu</td><td>Goma</td><td>0</td><td>0</td><td>1</td><td>28</td></tr><tr><td>Nord-Kivu</td><td>Katwa</td><td>13</td><td>0</td><td>4</td><td>99</td></tr><tr><td>Nord-Kivu</td><td>Karisimbi</td><td>0</td><td>0</td><td>0</td><td>249</td></tr><tr><td>Nord-Kivu</td><td>Kyondo</td><td>0</td><td>0</td><td>0</td><td>16</td></tr><tr><td>Sud-Kivu</td><td>Miti-Murhesa</td><td>1</td><td>0</td><td>1</td><td>ND</td></tr><tr class="total-row"><td>Total</td><td>—</td><td>906</td><td>221</td><td>101</td><td>2.231</td></tr></tbody></table></div></div>
+      <div class="source-box" style="margin-top:18px"><b>Fuente:</b> Rapport de Situation Ebola, Gouvernement de la République Démocratique du Congo. Situation au 24 mai 2026 | Publication du 25 mai 2026. Elaboración y rediseño: @solsilvanazb_episig.</div>
+    </section>
+
+    <footer class="footer"><div class="handle">@solsilvanazb_episig</div><div class="footnote">Sala situacional para comunicación técnica. Datos sujetos a actualización conforme nuevos boletines oficiales.</div></footer>
+  </main>
+
+  <script>
+    const tabs = document.querySelectorAll('.tab');
+    const panels = document.querySelectorAll('.panel');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const target = tab.dataset.tab;
+        tabs.forEach(t => t.classList.remove('active'));
+        panels.forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById(target).classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>
